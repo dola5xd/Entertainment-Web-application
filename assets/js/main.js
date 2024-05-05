@@ -82,10 +82,13 @@ const importTrending = function () {
     data.forEach((e) => {
       if (e.isTrending) {
         // Slide component
+        const gear =
+          e.title.split(" ")[0].toLowerCase() == "bottom"
+            ? e.title.split(" ")[1].toLowerCase()
+            : e.title.split(" ")[0].toLowerCase();
         const slide = `
-        <div class="swiper-slide relative  bg-${e.title
-          .split(" ")[0]
-          .toLowerCase()}">
+        <div class="swiper-slide relative ${"bg-" + gear}
+        ">
         <span class="absolute z-[50] right-[20px] top-[15px]">
           <button class="bookmark rounded-full bg-GreyishBlue p-[10px]" onclick="bookmark()">
             <svg
